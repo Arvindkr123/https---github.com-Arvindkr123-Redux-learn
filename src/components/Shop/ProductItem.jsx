@@ -6,7 +6,6 @@ import { addItemToCart } from '../../store/cart-Slice';
 const ProductItem = (props) => {
   const { title, price, description, id } = props;
   const dispatch = useDispatch();
-
   const addToCart = () => {
     dispatch(addItemToCart(
       {
@@ -32,3 +31,4 @@ const ProductItem = (props) => {
 };
 
 export default ProductItem;
+
