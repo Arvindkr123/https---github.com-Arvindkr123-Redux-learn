@@ -4,7 +4,8 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         items: [],
-        totalQuantity: 0
+        totalQuantity: 0,
+        change: false
     },
     reducers: {
         replaceCart(state, action) {
@@ -16,6 +17,7 @@ const cartSlice = createSlice({
             const newItem = action.payload;
             const existingItem = state.items.find(item => item.id === newItem.id);
             state.totalQuantity++;
+            state.change = true;
             if (!existingItem) {
                 // if item is not exist then add the new item
                 state.items.push({
@@ -35,6 +37,7 @@ const cartSlice = createSlice({
             const id = action.payload;
             const existingItem = state.items.find(item => item.id === id);
             state.totalQuantity--;
+            state.change = true;
             if (existingItem.quantity === 1) {
                 // if existing qty is one then remove that item from the array
                 state.items = state.items.filter(item => item.id !== id);
